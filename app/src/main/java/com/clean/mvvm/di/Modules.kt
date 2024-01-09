@@ -3,7 +3,7 @@ package com.clean.mvvm.di
 import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
-import com.clean.mvvm.data.database.LBGDatabase
+import com.clean.mvvm.data.database.PCDatabase
 import com.clean.mvvm.data.repositories.CatDetailsRepositoryImpl
 import com.clean.mvvm.data.repositories.CatsRepositoryImpl
 import com.clean.mvvm.data.services.CatsService
@@ -118,8 +118,8 @@ private val dispatchModule = module {
 }
 
 private val databaseModule = module {
-    single { LBGDatabase.getInstance(androidContext()) }
-    single { get<LBGDatabase>().favImageDao() }
+    single { PCDatabase.getInstance(androidContext()) }
+    single { get<PCDatabase>().favImageDao() }
 }
 
 val nullOnEmptyConverterFactory = object : Converter.Factory() {

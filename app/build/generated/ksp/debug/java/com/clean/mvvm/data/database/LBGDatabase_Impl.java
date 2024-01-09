@@ -27,7 +27,7 @@ import javax.annotation.processing.Generated;
 
 @Generated("androidx.room.RoomProcessor")
 @SuppressWarnings({"unchecked", "deprecation"})
-public final class LBGDatabase_Impl extends LBGDatabase {
+public final class LBGDatabase_Impl extends PCDatabase {
   private volatile FavouriteDao _favouriteDao;
 
   @Override

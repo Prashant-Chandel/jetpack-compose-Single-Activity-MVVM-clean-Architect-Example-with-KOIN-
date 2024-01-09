@@ -5,7 +5,7 @@ import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.SmallTest
-import com.clean.mvvm.data.database.LBGDatabase
+import com.clean.mvvm.data.database.PCDatabase
 import com.clean.mvvm.data.database.dao.FavouriteDao
 import com.clean.mvvm.data.database.entities.FavImageEntity
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -22,13 +22,13 @@ class CatItemDaoTest {
 
 
     private lateinit var catFavDao: FavouriteDao
-    private lateinit var itemDb: LBGDatabase
+    private lateinit var itemDb: PCDatabase
 
     @Before
     fun create() {
         val context = ApplicationProvider.getApplicationContext<Context>()
         itemDb = Room
-            .inMemoryDatabaseBuilder(context, LBGDatabase::class.java)
+            .inMemoryDatabaseBuilder(context, PCDatabase::class.java)
             .build()
         catFavDao = itemDb.favImageDao()
     }

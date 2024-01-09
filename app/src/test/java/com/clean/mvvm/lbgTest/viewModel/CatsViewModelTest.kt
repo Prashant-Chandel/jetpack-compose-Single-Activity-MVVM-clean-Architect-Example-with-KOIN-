@@ -4,7 +4,7 @@ import android.app.Application
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.clean.mvvm.R
 import com.clean.mvvm.data.NetworkResult
-import com.clean.mvvm.data.database.LBGDatabase
+import com.clean.mvvm.data.database.PCDatabase
 import com.clean.mvvm.data.models.catData.CatResponse
 import com.clean.mvvm.data.models.catData.FavouriteCatsItem
 import com.clean.mvvm.data.repositories.CatsRepositoryImpl
@@ -72,7 +72,7 @@ class CatsViewModelTest {
     @Before
     fun setUp() {
         MockitoAnnotations.openMocks(this)
-        val databaseReference = mock(LBGDatabase::class.java)
+        val databaseReference = mock(PCDatabase::class.java)
         val apiHelper = CatApiServiceHelperImpl(catService)
         val dbHelper = CatsDatabaseHelperImpl(databaseReference)
         mCatsRepo = CatsRepositoryImpl(apiHelper, dbHelper)

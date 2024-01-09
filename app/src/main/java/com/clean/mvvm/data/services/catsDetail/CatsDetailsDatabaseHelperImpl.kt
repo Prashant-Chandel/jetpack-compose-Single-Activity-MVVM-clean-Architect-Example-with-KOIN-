@@ -1,9 +1,9 @@
 package com.clean.mvvm.data.services.catsDetail
 
-import com.clean.mvvm.data.database.LBGDatabase
+import com.clean.mvvm.data.database.PCDatabase
 import com.clean.mvvm.data.database.entities.FavImageEntity
 
-class CatsDetailsDatabaseHelperImpl(private val db: LBGDatabase) : CatsDetailsDatabaseHelper {
+class CatsDetailsDatabaseHelperImpl(private val db: PCDatabase) : CatsDetailsDatabaseHelper {
     override suspend fun insertFavCatImageRelation(favCatId: Int, imageId: String): Long {
         return FavImageEntity(favCatId, imageId).let {
             db.favImageDao().insertFavCatImageRelation(it)
