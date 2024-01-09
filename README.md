@@ -199,83 +199,7 @@ which making it easier to develop and test.
 
 ##### *Note*
 
-In this example, I initially used two activities to display cats to the user and manage adding or
-deleting cats from the favorite list. However, it's possible to achieve the same functionality
-within
-a single activity by implementing a navigation scenario for a fullView Composable, jetpack
-Navigation, you can follow these steps:
-
-1. Set Up Jetpack Navigation:
-
-```kotlin 
- object Route {
-    const val CAT_FULL_View = "Cat_Image_AS_Sized/{CatUrl}/{imageId}"
-}
-```
-
-replace CatAvtivity current composable method
-
-```kotlin 
-@Composable
-fun CatsDestination() {
-    CatScreen(
-        state = viewModel.state.collectAsState().value,
-        effectFlow = viewModel.effects.receiveAsFlow()
-    ) { itemUrl, imageId ->
-
-        // call navigate logic here 
-        // Navigate to the full view with the selected cat data
-        navController.navigate("catFullView/$itemUrl/$imageId")
-    }
-}
-```
-
-then pass this route to navigation host case like
-
-```kotlin 
-composable(route = Route.CAT_FULL_View,
-    arguments = listOf(navArgument("itemUrl") { type = NavType.StringType },
-        navArgument("imageId") { type = NavType.StringType }
-    )
-) { backStackEntry ->
-    //call relevent compose method here to display full vie to user 
-    val catImageId = backStackEntry.arguments?.getString("imageId")
-    viewModel.checkFav(catImageId)
-    val catImageUrl = backStackEntry.arguments?.getString("itemUrl")
-    CatsFullView(catImageUrl)
-
-
-}
-
-```
-
-2. Migrate All Api calls from CatsDetailsViewModel to CatsViewModel .After that you will only have
-   one ViewModel present in Application.
-3. Now you have to make changes in your composable to display fullView
-
-```kotlin
- @Composable
-private fun CatsFullView(url: String) {
-    val isFavourite by viewModel.isFavourite.collectAsState()
-    initialState = remember { viewModel.isFavourite.value }
-    CatFullDetail(
-        url = url,
-        isFavourite = isFavourite,
-        favSelection = {
-            viewModel.updateFavouriteState(it)
-            if (it) {
-                viewModel.postFavCatData()
-            } else viewModel.deleteFavCatData()
-        }
-    )
-
-}
-```
-
-4. According to above calls make changes in CatFullScreen.kt file
-5. Replace topbar navigation icon to back icon when you saw user full view screen and handled this
-   according to back flow.
-
+In this instance, I initially employed a single activity with multiple composables to present cat information to the user and facilitate the addition or removal of cats from the favorites list. Nevertheless, it is feasible to accomplish the same functionality using more than one activity by substituting the navigation scenario of a fullView Composable with a new activity. The compose call is included in this new activity. [You can click on this link to inspect the code for your reference:](https://github.com/Prashant-Chandel/Jetpack-compose-MVVM-Clean_Architect-Example-with-koin)
 🙌 Now after that we have two ways to show same flow to user✌️.
 
 ## Unit Testing
@@ -309,10 +233,6 @@ This commit introduces the following major changes:
 Injection. This architectural pattern is essential for providing objects with their dependencies,
 improving code modularity and testability.
 
-**Basic MVVM Project Architecture:** The commit lays the foundation for the MVVM (
-Model-View-ViewModel) architecture. This separation of concerns is crucial for building maintainable
-and scalable applications.
-
 **MVVM Clean Architecture:** The project now adheres to the MVVM Clean Architecture. This
 architectural style emphasizes the separation of data, domain logic, and presentation concerns,
 resulting in code that is clean and maintainable.
@@ -321,34 +241,8 @@ resulting in code that is clean and maintainable.
 components and Mockito for API and network-related components. Unit testing ensures that the
 application's code is robust and free from critical issues.
 
-**Enhanced Flow Handling:** Improvements in flow handling make the application more responsive and
-efficient in handling asynchronous data changes in the UI layer.
-
-**UI Enhancements:** The commit includes enhancements to the user interface, improving the overall
-user experience.
-
-**SOLID Principles and Kotlin Components:** The code adheres to the SOLID principles, ensuring that
-the codebase is structured with a focus on Single Responsibility, Open-Closed, Liskov Substitution,
-Interface Segregation, and Dependency Inversion principles. Additionally, Kotlin-specific components
-and functions are leveraged for efficient and expressive code.
-
-> [!IMPORTANT]   
-> [Commit f4952563f5cb885edbcd72d9b43f79f7cc883b1e](https://github.com/Prashant-Chandel/MVVM-Clean_Architect-Example-with-koin/commit/f4952563f5cb885edbcd72d9b43f79f7cc883b1e)
-
-This commit introduces the following major changes:
-
-**Enhanced Flow Handling:** Improvements in flow handling make the application more responsive and
-efficient in handling asynchronous data changes in the data layer.
-
-**changes Koin UseCase module**  Koin Use Case Module Update
-
-In the project's evolution, there have been changes to the declaration of the Koin use case module.
-These changes enhance the way use cases are injected into the application, providing more
-flexibility and modularity.
-
-Updated Koin Module Declaration
-
-Previously, the Koin use case module might have been declared as follows:
+**Koin Use Case Module Update**
+the Koin use case module might have been declared as follows:
 
 ```
 "single" definition, create an object that is persistent with the entire container lifetime (can't be dropped).
@@ -363,7 +257,7 @@ To ensure compliance with these conditions:
  short live components (views) - used by only one screen & must be dropped at the end of the screen
 ```
 
-Now, with the recent changes, the Koin module for use cases is declared in a more scallable manner:
+Now, the Koin module for use cases is declared in a more scallable manner:
 
  ```
 "factory definition", create a new object each time. Short live. No persistence in the container (can't be shared).
