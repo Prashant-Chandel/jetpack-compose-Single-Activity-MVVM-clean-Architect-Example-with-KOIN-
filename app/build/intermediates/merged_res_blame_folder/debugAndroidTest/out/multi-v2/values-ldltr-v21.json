@@ -1,0 +1,19 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.clean.mvvm.test.app-mergeDebugAndroidTestResources-46:/values-ldltr-v21/values-ldltr-v21.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\PR20406131\\.gradle\\caches\\transforms-3\\783d8cc9158b12c2fc2682fc3c5c0d2d\\transformed\\appcompat-1.6.1\\res\\values-ldltr-v21\\values-ldltr-v21.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "112",
+                        "endOffsets": "163"
+                    }
+                }
+            ]
+        }
+    ]
+}
