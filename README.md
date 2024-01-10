@@ -218,14 +218,18 @@ are tested independently.
 
 ## Environment Setup
 
-- First, make sure you have Android ```(Android Studio Giraffe | 2022.3.1 Patch 2)```  version
+- First, make sure you have Android ```(Android Studio Hedgehog | 2023.1.1 Patch 1)``` version
   installed
 - Android Studio's Gradle JDK version should be Java 17.0.6.
 
 ### Commits Includes
 
 > [!IMPORTANT]   
-> [Commit c2510e7b6b3b29c432974c0ee85ce1b80e587a3b](https://github.com/Prashant-Chandel/MVVM-Clean_Architect-Example-with-koin/commit/c2510e7b6b3b29c432974c0ee85ce1b80e587a3b)
+> [Commit 1e90273ba3d8fb6a890197f7399e9d5c73384d29](https://github.com/Prashant-Chandel/jetpack-compose-Single-Activity-MVVM-clean-Architect-Example-with-KOIN-/commit/1e90273ba3d8fb6a890197f7399e9d5c73384d29)
+> 
+> [Commit b0c3aef1002ff63a5efecc01512f394e6a55df8c](https://github.com/Prashant-Chandel/jetpack-compose-Single-Activity-MVVM-clean-Architect-Example-with-KOIN-/commit/b0c3aef1002ff63a5efecc01512f394e6a55df8c)
+> 
+> [Commit 9d5160002ab1a35b8ed74b509f718809eab8597a](https://github.com/Prashant-Chandel/jetpack-compose-Single-Activity-MVVM-clean-Architect-Example-with-KOIN-/commit/9d5160002ab1a35b8ed74b509f718809eab8597a)
 
 This commit introduces the following major changes:
 
